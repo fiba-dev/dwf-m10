@@ -11,7 +11,7 @@ import { getOrder } from "lib/hooks";
 export function ThanksWindows() {
 	const router = useRouter();
 	console.log("SOY ROUTER QUERY", router.query);
-	const [data, setData] = useState();
+	const [data, setData] = useState({} as any);
 	const externalReference = router.query["external_reference"];
 	console.log("SOY REFERENCE", externalReference);
 	useEffect(() => {
