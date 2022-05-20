@@ -6,22 +6,48 @@ import { Root } from "./styled";
 
 import { BotonMobil, BotonNaranja } from "components/ui/buttons";
 import { Large, Subtitle, Title } from "components/ui/texts";
+import { getOrder } from "lib/hooks";
 
 export function ThanksWindows() {
 	const router = useRouter();
-	return (
-		<Root>
-			<Title>Gracias por comprar en COMPRALO</Title>
-			<Subtitle>
-				se abrio una nueva ventana para que pueda realizar su pago
-			</Subtitle>
-			<a
-				onClick={() => {
-					router.push("/");
-				}}
-			>
-				<Large fucsia={true}>Volver al Home </Large>
-			</a>
-		</Root>
-	);
+	console.log("SOY ROUTER QUERY", router.query);
+	const [data, setData] = useState();
+	const externalReference = router.query["external_reference"];
+	console.log("SOY REFERENCE", externalReference);
+	useEffect(() => {
+		if (externalReference) {
+			const fetchData = async () => {
+				const res = await getOrder(externalReference);
+				console.log("SOY RES", res);
+				setData(res);
+			};
+			fetchData().catch(console.error);
+		}
+	}, [externalReference]);
+	console.log("SOY DATAAAAA", data);
+	if (data) {
+		let status = data.data.status;
+		console.log("SOY STATUS", status);
+
+		const estado =
+			status == "closed"
+				? "FUE EXITOSO"
+				: status == "opened"
+				? " ESTA PENDIENTE"
+				: "FUE RECHAZADO";
+
+		return (
+			<Root>
+				<Title>Gracias por comprar en COMPRALO</Title>
+				<Subtitle>SU PAGO {estado}</Subtitle>
+				<a
+					onClick={() => {
+						router.push("/");
+					}}
+				>
+					<Large fucsia={true}>Volver al Home </Large>
+				</a>
+			</Root>
+		);
+	}
 }

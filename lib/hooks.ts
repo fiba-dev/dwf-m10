@@ -53,5 +53,11 @@ async function createOrder(productId: any, quantity: number) {
 		  })
 		: false;
 }
-
-export { useProducts, useMe, useSearchProducts, editMe, createOrder };
+async function getOrder(externalReference: any) {
+	return externalReference
+		? await fetchApi("/order/" + externalReference, {
+				headers: { "Content-Type": "application/json" },
+		  })
+		: false;
+}
+export { useProducts, useMe, useSearchProducts, editMe, createOrder, getOrder };
