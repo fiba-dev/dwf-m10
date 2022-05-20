@@ -49,5 +49,11 @@ export function ThanksWindows() {
 				</a>
 			</Root>
 		);
+	} else {
+		return (
+			<Root>
+				<Title>Gracias por comprar en COMPRALO</Title>{" "}
+			</Root>
+		);
 	}
 }
