@@ -25,35 +25,28 @@ export function ThanksWindows() {
 		}
 	}, [externalReference]);
 	console.log("SOY DATAAAAA", data);
-	if (data) {
-		let status = data.data.status;
-		console.log("SOY STATUS", status);
 
-		const estado =
-			status == "closed"
-				? "FUE EXITOSO"
-				: status == "opened"
-				? " ESTA PENDIENTE"
-				: "FUE RECHAZADO";
+	let status = data ? data.data.status : "";
+	console.log("SOY STATUS", status);
 
-		return (
-			<Root>
-				<Title>Gracias por comprar en COMPRALO</Title>
-				<Subtitle>SU PAGO {estado}</Subtitle>
-				<a
-					onClick={() => {
-						router.push("/");
-					}}
-				>
-					<Large fucsia={true}>Volver al Home </Large>
-				</a>
-			</Root>
-		);
-	} else {
-		return (
-			<Root>
-				<Title>Gracias por comprar en COMPRALO</Title>{" "}
-			</Root>
-		);
-	}
+	const estado =
+		status == "closed"
+			? "FUE EXITOSO"
+			: status == "opened"
+			? " ESTA PENDIENTE"
+			: "FUE RECHAZADO";
+
+	return (
+		<Root>
+			<Title>Gracias por comprar en COMPRALO</Title>
+			<Subtitle>SU PAGO {estado}</Subtitle>
+			<a
+				onClick={() => {
+					router.push("/");
+				}}
+			>
+				<Large fucsia={true}>Volver al Home </Large>
+			</a>
+		</Root>
+	);
 }
