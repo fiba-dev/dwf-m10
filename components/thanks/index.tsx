@@ -24,7 +24,9 @@ export function ThanksWindows() {
 			? "FUE EXITOSO"
 			: status == "opened"
 			? " ESTA PENDIENTE"
-			: (status = "expired" ? "FUE RECHAZADO" : "ESTA PROCESANDO");
+			: status == "expired"
+			? "FUE RECHAZADO"
+			: "ESTA PROCESANDO";
 
 	return (
 		<Root>
