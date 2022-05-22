@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { refreshPage, useMe } from "lib/hooks";
+import { useMe } from "lib/hooks";
 import { Body, Large } from "../texts";
 import { useRouter } from "next/router";
-import { getSaveitem, removeItem } from "lib/api";
 
-import { useState } from "react";
 import { BotonFucsia } from "../buttons";
-import { createRouteLoader } from "next/dist/client/route-loader";
+
 const DisplayLogin = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -35,8 +33,7 @@ export function LoginDisplay() {
 				<Body white>{user.email}</Body>
 				<a
 					onClick={() => {
-						removeItem("email"), removeItem("token");
-						refreshPage();
+						router.push("/logout");
 					}}
 				>
 					{" "}
@@ -67,8 +64,7 @@ export function LoginDisplayAndButton() {
 				<Body white>{user.email}</Body>
 				<a
 					onClick={() => {
-						removeItem("email"), removeItem("token");
-						refreshPage();
+						router.push("/logout");
 					}}
 				>
 					{" "}
