@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useSearchProducts, useProducts } from "lib/hooks";
+import { useSearchProducts } from "lib/hooks";
 import { Card } from "components/ui/card";
 import { PageButton } from "components/ui/buttons";
 import { MostrarProductos } from "./styled";
@@ -46,7 +46,6 @@ export function ShowProducts() {
 	if (product) {
 		const results =
 			product.results.length == 0 ? "No se encontraron Resultados" : "";
-		console.log("Soy q limit", q.limit);
 		let limit = q.limit ? parseInt(q.limit.toString()) : 5;
 		let offset = q.offset ? parseInt(q.offset.toString()) : 5;
 		const paginaActual = product.results.length == 0 ? "" : offset / 5 + 1;

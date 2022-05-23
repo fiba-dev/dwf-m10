@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
-import { useSearchProducts, useProducts, createOrder } from "lib/hooks";
-import { Card, Item, BuyItemCard } from "components/ui/card";
+import { useProducts, createOrder } from "lib/hooks";
+import { BuyItemCard } from "components/ui/card";
 import { useForm } from "react-hook-form";
 import { ErrorMessage, MostrarProductos, Root, RootTotal } from "./styled";
-import { Pagination } from "components/ui/pagination";
 import { Subtitle, Title } from "components/ui/texts";
 import { Placeholder } from "components/ui/textFields";
 import { BotonCeleste } from "components/ui/buttons";
@@ -18,10 +17,8 @@ export function BuyItem() {
 	} = useForm();
 	const router = useRouter();
 	const itemId = router.query;
-	console.log("SOY ROUTER QUERY", itemId);
 	const watchFields = watch("cantidad");
 	const product = useProducts(itemId.itemId);
-	console.log("soy watch", watchFields);
 
 	async function Comprar() {
 		if (watchFields <= 10) {
@@ -31,8 +28,6 @@ export function BuyItem() {
 					"seguro desea comprar " + quantity + " " + product.object.Name
 				)
 			) {
-				console.log("SOY CANTIDAD E ITEMS", quantity, itemId.itemId);
-
 				let res = await createOrder(itemId.itemId, quantity);
 				if (res.url) {
 					router.replace("/thanks");
@@ -45,17 +40,13 @@ export function BuyItem() {
 	}
 
 	if (product) {
-		console.log("SOY PRODUCT", product.object);
 		let precio =
 			watchFields >= 1
 				? product.object["Unit cost"] * watchFields
 				: product.object["Unit cost"];
-		console.log("Soy precio", precio);
 
 		return (
 			<MostrarProductos>
-				{/* <Subtitle>{results}</Subtitle>{" "} */}
-
 				<BuyItemCard
 					key={product.object.objectID}
 					nombre={product.object.Name}

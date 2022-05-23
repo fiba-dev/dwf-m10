@@ -2,13 +2,9 @@ import styled from "styled-components";
 import { LogoPrincipal, MenuBurger } from "components/ui/logos";
 import { useState } from "react";
 import { MobileMenuWindows } from "components/mobilMenuWindows";
-import { BotonFucsia } from "components/ui/buttons";
+
 import { useRouter } from "next/router";
-import {
-	LoginDisplay,
-	LoginDisplayAndButton,
-} from "components/ui/displayLogin";
-import { getSaveitem } from "lib/api";
+import { LoginDisplayAndButton } from "components/displayLogin";
 
 const HeaderContainer = styled.div`
 	display: flex;
@@ -22,7 +18,6 @@ const HeaderContainer = styled.div`
 `;
 
 export function Header() {
-	const router = useRouter();
 	const [stateWindows, setStateWindows] = useState(false);
 
 	return (

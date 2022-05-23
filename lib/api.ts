@@ -6,28 +6,20 @@ async function fetchApi(input: RequestInfo, options: any) {
 	const newOption: any = options ? options : {};
 
 	if (token) {
-		console.log("SOYNEWOPTION", newOption);
-
 		newOption.headers ||= {};
 		newOption.method = newOption.method ? newOption.method : "GET";
 		newOption.headers.Authorization = "bearer " + token;
 	}
 	if (newOption.body) {
-		console.log("ENTRE A BODY");
-
 		if (newOption.method != "GET") {
-			console.log("ENTRE A BODY get");
 			newOption.body = JSON.stringify(newOption.body);
 		}
 	}
-	console.log("SOY NEW OPTION", newOption);
 	try {
 		const res = await fetch(url, newOption);
 
 		if (res) {
 			if (res.status >= 200 && res.status < 300) {
-				console.log("ENTRE AL RES STATUS", res);
-
 				return res.json();
 			} else {
 				return false;

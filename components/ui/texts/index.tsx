@@ -22,7 +22,6 @@ export const Subtitle = styled.h2<{ white?: any }>`
 			color: white;
 		`}
 `;
-
 export const Large = styled.p<{ fucsia?: any; white?: any }>`
 	font-size: 20px;
 	font-weight: 400;

@@ -1,24 +1,50 @@
 import { InstagramLogo, TwitterLogo } from "components/ui/logos";
 import { Body, Large } from "components/ui/texts";
 import { Root, RootLinks, RootMenu, RootRedes } from "components/footer/styled";
-import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export function Footer() {
+	const router = useRouter();
 	return (
 		<Root>
 			<RootLinks>
 				<RootMenu>
-					<a>
+					<a
+						onClick={() => {
+							router.push("/signin");
+						}}
+					>
 						<Body white>Ingresar</Body>
 					</a>
 					<a>
-						<Body white>Mi Perfil</Body>
+						<Body
+							white
+							onClick={() => {
+								router.push("/profile");
+							}}
+						>
+							Mi Perfil
+						</Body>
 					</a>
 					<a>
-						<Body white>Buscar</Body>
+						<Body
+							white
+							onClick={() => {
+								router.push("/");
+							}}
+						>
+							Buscar
+						</Body>
 					</a>
 					<a>
-						<Body white>Logout</Body>
+						<Body
+							white
+							onClick={() => {
+								router.push("/logout");
+							}}
+						>
+							Logout
+						</Body>
 					</a>
 				</RootMenu>
 				<RootRedes>

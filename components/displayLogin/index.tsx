@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useMe } from "lib/hooks";
-import { Body, Large } from "../texts";
+import { Body, Large } from "../ui/texts";
 import { useRouter } from "next/router";
 
-import { BotonFucsia } from "../buttons";
+import { BotonFucsia } from "../ui/buttons";
 
 const DisplayLogin = styled.div`
 	display: flex;
@@ -25,7 +25,6 @@ const DisplayLoginDesktop = styled.div`
 export function LoginDisplay() {
 	const router = useRouter();
 	let user = useMe();
-	console.log("SOY USER", user);
 
 	if (user.email) {
 		return (

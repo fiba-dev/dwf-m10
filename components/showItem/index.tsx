@@ -9,17 +9,11 @@ import { Subtitle } from "components/ui/texts";
 export function ShowItem() {
 	const router = useRouter();
 	const itemId = router.query;
-	console.log("SOY ROUTER QUERY", itemId);
-
 	const product = useProducts(itemId.itemId);
 
 	if (product) {
-		console.log("SOY PRODUCT", product.object);
-
 		return (
 			<MostrarProductos>
-				{/* <Subtitle>{results}</Subtitle>{" "} */}
-
 				<Item
 					key={product.object.objectID}
 					nombre={product.object.Name}

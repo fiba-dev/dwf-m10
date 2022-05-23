@@ -1,10 +1,9 @@
 import { LogoPrincipal, MenuBurger } from "components/ui/logos";
 import { useState } from "react";
 import { MobileMenuWindows } from "components/mobilMenuWindows";
-import { Buscar, BuscarOscuro } from "components/InputBuscar";
+import { BuscarOscuro } from "components/InputBuscar";
 import { HeaderContainer, HeaderContainerSearch } from "./styled";
-import { BotonFucsia, BotonNaranja } from "components/ui/buttons";
-import { LoginDisplayAndButton } from "components/ui/displayLogin";
+import { LoginDisplayAndButton } from "components/displayLogin";
 
 export function HeaderSearch() {
 	const [stateWindows, setStateWindows] = useState(false);

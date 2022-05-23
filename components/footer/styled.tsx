@@ -22,6 +22,13 @@ export const RootMenu = styled.div`
 	height: 50%;
 	align-items: left;
 	justify-content: space-evenly;
+
+	p {
+		:hover {
+			color: var(--fucsia);
+			cursor: pointer;
+		}
+	}
 `;
 export const RootRedes = styled.div`
 	display: flex;

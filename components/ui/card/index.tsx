@@ -2,7 +2,6 @@ import Image from "next/image";
 import styled from "styled-components";
 import { Body, Large, Subtitle, Title } from "components/ui/texts";
 import { BotonCeleste } from "../buttons";
-import { Placeholder } from "../textFields";
 
 const CardContainer = styled.div`
 	display: flex;
@@ -13,26 +12,16 @@ const CardContainer = styled.div`
 	border: solid 4px;
 	border-radius: 8px;
 	margin-bottom: 20px;
+	:hover {
+		background-color: var(--celeste);
+	}
 `;
-
 const CardInfo = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 `;
-
-export function Card({ imagen = "", precio = "", nombre = "", onClick }: any) {
-	return (
-		<CardContainer onClick={onClick}>
-			<Image alt="Card Imagen" src={imagen} width={328} height={237} />
-			<CardInfo>
-				<Large>{nombre}</Large>
-				<Subtitle>${precio}</Subtitle>
-			</CardInfo>
-		</CardContainer>
-	);
-}
 
 const ItemContainer = styled.div`
 	display: flex;
@@ -72,27 +61,6 @@ const ItemInfo = styled.div`
 	}
 `;
 
-export function Item({
-	imagen = "",
-	precio = "",
-	nombre = "",
-	description = "",
-	onClick,
-}: any) {
-	return (
-		<ItemContainer>
-			<Image alt="Item to Buy" src={imagen} width={"808px"} height={"384px"} />
-			<ItemInfo>
-				<Subtitle>{nombre}</Subtitle>
-				<Title>${precio}</Title>
-				<BotonCeleste onClick={onClick}>
-					<Subtitle>Comprar </Subtitle>
-				</BotonCeleste>
-				<Body>{description}</Body>
-			</ItemInfo>
-		</ItemContainer>
-	);
-}
 const BuyItemInfo = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -128,13 +96,40 @@ const BuyItemContainer = styled.div`
 		height: 384px;
 	}
 `;
-export function BuyItemCard({
+export function Card({ imagen = "", precio = "", nombre = "", onClick }: any) {
+	return (
+		<CardContainer onClick={onClick}>
+			<Image alt="Card Imagen" src={imagen} width={328} height={237} />
+			<CardInfo>
+				<Large>{nombre}</Large>
+				<Subtitle>${precio}</Subtitle>
+			</CardInfo>
+		</CardContainer>
+	);
+}
+
+export function Item({
 	imagen = "",
 	precio = "",
 	nombre = "",
 	description = "",
 	onClick,
 }: any) {
+	return (
+		<ItemContainer>
+			<Image alt="Item to Buy" src={imagen} width={"808px"} height={"384px"} />
+			<ItemInfo>
+				<Subtitle>{nombre}</Subtitle>
+				<Title>${precio}</Title>
+				<BotonCeleste onClick={onClick}>
+					<Subtitle>Comprar </Subtitle>
+				</BotonCeleste>
+				<Body>{description}</Body>
+			</ItemInfo>
+		</ItemContainer>
+	);
+}
+export function BuyItemCard({ imagen = "", precio = "", nombre = "" }: any) {
 	return (
 		<BuyItemContainer>
 			<Image alt="Item to Buy" src={imagen} width={"808px"} height={"384px"} />

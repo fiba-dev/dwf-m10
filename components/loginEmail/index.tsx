@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { sendCode, getToken } from "lib/api";
-import { useMe } from "lib/hooks";
 import router from "next/router";
-import { text } from "stream/consumers";
 import { Placeholder } from "components/ui/textFields";
 import { Root, RootCode } from "./styled";
 import { useForm } from "react-hook-form";
@@ -18,7 +16,6 @@ export function Login() {
 	const [email, setEmail] = useState("");
 	function handlerEmailForm(e: any) {
 		const email = e.email;
-		console.log("soy email", email, e);
 		sendCode(email);
 		setEmail(email);
 	}
@@ -26,8 +23,6 @@ export function Login() {
 		const code = e.code;
 		try {
 			getToken(email, code).then((res) => {
-				console.log("SOY RES", res);
-
 				if (res != undefined) {
 					if (res == false) {
 						window.alert("Codigo Incorrecto");
@@ -40,7 +35,7 @@ export function Login() {
 				}
 			});
 		} catch (error) {
-			console.log("ERROR DEL CATCH", error);
+			throw error;
 		}
 	}
 	const [styleEmail, setStyleEmail] = useState({

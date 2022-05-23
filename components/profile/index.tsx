@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { sendCode, getToken } from "lib/api";
+import React from "react";
 import { useMe, editMe } from "lib/hooks";
 import router from "next/router";
-import { text } from "stream/consumers";
-import { Placeholder, TextField } from "components/ui/textFields";
+import { Placeholder } from "components/ui/textFields";
 import { Root } from "./styled";
 import { useForm } from "react-hook-form";
 import { BotonNaranja } from "components/ui/buttons";
@@ -18,14 +16,11 @@ export function Profile() {
 	let user = useMe();
 
 	async function handlerUserForm(e: any) {
-		console.log("SOY E", e);
-
 		const nombre = e.name ? e.name : user.nombre;
 		const direccion = e.direccion ? e.direccion : user.direccion;
 		const telefono = e.phone ? e.phone : user.telefono;
 
 		let res = await editMe({ nombre, direccion, telefono });
-		console.log("SOY RES DE PROFILE", res);
 
 		if (res == true) {
 			window.alert("MODIFICADO CON EXITO");

@@ -24,20 +24,3 @@ export const Placeholder = styled.input<{ profile?: any }>`
 			`}
 	}
 `;
-const TextFieldContainer = styled.label`
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 10px;
-	@media (min-width: 1080px) {
-		width: 457px;
-	}
-`;
-
-export function TextField({ type = "", placeholder = "", label = "" }: any) {
-	return (
-		<TextFieldContainer>
-			<Label>{label}</Label>
-			<Placeholder type={type} placeholder={placeholder}></Placeholder>
-		</TextFieldContainer>
-	);
-}

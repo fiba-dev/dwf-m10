@@ -1,8 +1,37 @@
 import { Body, Subtitle } from "../texts";
 import styled from "styled-components";
-
-export function Logo() {}
+import { useRouter } from "next/router";
+const ContainerRedes = styled.a`
+	display: flex;
+	flex-direction: row;
+	text-decoration: none;
+	p {
+		:hover {
+			color: var(--fucsia);
+		}
+	}
+`;
+const ContainerLogo = styled.div`
+	display: flex;
+	width: 207px;
+	height: 46px;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	h2 {
+		:hover {
+			color: var(--fucsia);
+		}
+	}
+`;
 const Burger = styled.div`
+	:hover {
+		rect {
+			color: var(--fucsia);
+			stroke: var(--fucsia);
+			fill: var(--fucsia);
+		}
+	}
 	@media (min-width: 1080px) {
 		display: none;
 	}
@@ -10,22 +39,14 @@ const Burger = styled.div`
 export function MenuBurger(props: any) {
 	return (
 		<Burger>
-			<svg
-				onClick={props.onClick}
-				viewBox="0 0 100 80"
-				stroke="white"
-				color="white"
-				width="40"
-				height="40"
-			>
-				<rect width="100" height="20" rx="8" color="white" fill="white"></rect>
+			<svg onClick={props.onClick} viewBox="0 0 100 80" width="40" height="40">
+				<rect width="100" height="20" rx="8" fill="white"></rect>
 				<rect y="30" width="100" height="20" fill="white" rx="8"></rect>
 				<rect y="60" width="100" height="20" fill="white" rx="8"></rect>
 			</svg>
 		</Burger>
 	);
 }
-
 export function Twitter() {
 	return (
 		<svg
@@ -46,19 +67,18 @@ export function Twitter() {
 		</svg>
 	);
 }
-const ContainerRedes = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
 export function TwitterLogo() {
+	const router = useRouter();
 	return (
-		<ContainerRedes>
+		<ContainerRedes
+			target="_blank"
+			href="https://www.linkedin.com/company/apx-school/"
+		>
 			{" "}
 			<Twitter /> <Body white> My E-Commerce</Body>
 		</ContainerRedes>
 	);
 }
-
 export function Instagram() {
 	return (
 		<svg
@@ -94,7 +114,10 @@ export function Instagram() {
 }
 export function InstagramLogo() {
 	return (
-		<ContainerRedes>
+		<ContainerRedes
+			target="_blank"
+			href="https://www.instagram.com/accounts/login/?next=/apx.school/"
+		>
 			<Instagram /> <Body white> My E-Commerce</Body>
 		</ContainerRedes>
 	);
@@ -136,18 +159,14 @@ export function CartLogo() {
 		</svg>
 	);
 }
-
-const ContainerLogo = styled.div`
-	display: flex;
-	width: 207px;
-	height: 46px;
-	justify-content: space-between;
-	align-items: center;
-`;
-
 export function LogoPrincipal() {
+	const router = useRouter();
 	return (
-		<ContainerLogo>
+		<ContainerLogo
+			onClick={() => {
+				router.push("/");
+			}}
+		>
 			<CartLogo />
 			<Subtitle white> Compralo</Subtitle>
 		</ContainerLogo>

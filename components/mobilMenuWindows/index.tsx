@@ -1,13 +1,9 @@
 import styled from "styled-components";
-import {
-	BotonCerrarMobil,
-	BotonMobil,
-	PageButton,
-} from "components/ui/buttons";
+import { BotonCerrarMobil, BotonMobil } from "components/ui/buttons";
 
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-import { LoginDisplay } from "components/ui/displayLogin";
+import { LoginDisplay } from "components/displayLogin";
 
 const MobileWindows = styled.div`
 	width: 100vw;

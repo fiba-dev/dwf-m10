@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect } from "react";
 import router from "next/router";
-
 import { Root } from "./styled";
 import { Title } from "components/ui/texts";
 import { getSaveitem, removeItem } from "lib/api";
-import { refreshPage, useMe } from "lib/hooks";
+import { refreshPage } from "lib/hooks";
 
 export function LogoutWindows() {
 	const email = getSaveitem("email");
