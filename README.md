@@ -36,3 +36,25 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## My WebPage
 
 https://dwf-m10-one.vercel.app/
+
+## User Test
+
+"nickname": "TETE3509822"
+"password": "qatest481"
+
+## Cards
+
+Mastercard 5031 7557 3453 0604, expired date: 11/25, code 123
+Visa 4509 9535 6623 3704, expired date: 11/25, code 123
+American Express 3711 803032 57522, expired date: 11/25, code 123
+
+## Owners Cards
+
+APRO Pago aprobado
+CONT Pago pendiente
+OTHE Rechazado por error general
+CALL Rechazado con validación para autorizar
+FUND Rechazado por monto insuficiente
+SECU Rechazado por código de seguridad inválido
+EXPI Rechazado por problema con la fecha de expiración
+FORM Rechazado por error en formulario
