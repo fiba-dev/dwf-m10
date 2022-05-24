@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useProducts, createOrder } from "lib/hooks";
+import { useProducts, createOrder, useMe } from "lib/hooks";
 import { BuyItemCard } from "components/ui/card";
 import { useForm } from "react-hook-form";
 import { ErrorMessage, MostrarProductos, Root, RootTotal } from "./styled";
@@ -19,23 +19,28 @@ export function BuyItem() {
 	const itemId = router.query;
 	const watchFields = watch("cantidad");
 	const product = useProducts(itemId.itemId);
-
+	const user = useMe();
 	async function Comprar() {
-		if (watchFields <= 10) {
-			let quantity = watchFields >= 1 ? parseInt(watchFields) : 1;
-			if (
-				window.confirm(
-					"seguro desea comprar " + quantity + " " + product.object.Name
-				)
-			) {
-				let res = await createOrder(itemId.itemId, quantity);
-				if (res.url) {
-					router.replace("/thanks");
-					window.open(res.url);
+		if (user) {
+			if (watchFields <= 10) {
+				let quantity = watchFields >= 1 ? parseInt(watchFields) : 1;
+				if (
+					window.confirm(
+						"seguro desea comprar " + quantity + " " + product.object.Name
+					)
+				) {
+					let res = await createOrder(itemId.itemId, quantity);
+					if (res.url) {
+						router.replace("/thanks");
+						window.open(res.url);
+					}
 				}
+			} else {
+				window.alert("NO HAY STOCK");
 			}
 		} else {
-			window.alert("NO HAY STOCK");
+			window.alert("DEBES ESTAR LOGEADO PARA COMPRAR");
+			router.push("/signin");
 		}
 	}
 
