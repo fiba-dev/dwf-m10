@@ -12,6 +12,7 @@ const CardContainer = styled.div`
 	border: solid 4px;
 	border-radius: 8px;
 	margin-bottom: 20px;
+	cursor: pointer;
 	:hover {
 		background-color: var(--celeste);
 	}
@@ -31,6 +32,7 @@ const ItemContainer = styled.div`
 	height: 600px;
 	max-width: 500px;
 	justify-content: space-evenly;
+	cursor: pointer;
 
 	@media (min-width: 1080px) {
 		max-width: 1080px;
@@ -47,17 +49,11 @@ const ItemInfo = styled.div`
 	align-items: flex-start;
 	height: 250px;
 	p {
-		height: 40px;
-		overflow: scroll;
 	}
 	@media (min-width: 1080px) {
 		width: 421px;
 
 		padding: 10px;
-		p {
-			height: 80px;
-			overflow: hidden;
-		}
 	}
 `;
 

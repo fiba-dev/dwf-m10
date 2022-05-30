@@ -10,7 +10,7 @@ export const Root = styled.div`
 	justify-content: space-around;
 	position: static;
 	bottom: 0px;
-	margin-top: 15px;
+
 	@media (min-width: 1080px) {
 		padding: 50px;
 		height: 400px;

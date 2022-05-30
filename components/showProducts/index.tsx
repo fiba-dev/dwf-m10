@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useSearchProducts } from "lib/hooks";
 import { Card } from "components/ui/card";
 import { PageButton } from "components/ui/buttons";
-import { MostrarProductos } from "./styled";
+import { MostrarProductos, Root } from "./styled";
 import { Pagination } from "components/ui/pagination";
 import { Subtitle } from "components/ui/texts";
 
@@ -57,26 +57,28 @@ export function ShowProducts() {
 				: "    ";
 		const verMenos = q.offset == (0).toString() ? "   " : "Pagina Anterior";
 		return (
-			<MostrarProductos>
+			<Root>
 				<Subtitle>{results}</Subtitle>{" "}
-				{product.results.map((r: any) => (
-					<Card
-						onClick={() => {
-							router.push("/item/" + r.objectID);
-						}}
-						key={r.objectID}
-						nombre={r.Name}
-						imagen={r.Images[0].url}
-						precio={r["Unit cost"]}
-					></Card>
-				))}
+				<MostrarProductos>
+					{product.results.map((r: any) => (
+						<Card
+							onClick={() => {
+								router.push("/item/" + r.objectID);
+							}}
+							key={r.objectID}
+							nombre={r.Name}
+							imagen={r.Images[0].url}
+							precio={r["Unit cost"]}
+						></Card>
+					))}
+				</MostrarProductos>
 				<Pagination>
 					{" "}
 					<PageButton onClick={VerMenos}> {verMenos} </PageButton>
 					<PageButton> {paginaActual} </PageButton>
 					<PageButton onClick={VerMas}> {verMas} </PageButton>
 				</Pagination>
-			</MostrarProductos>
+			</Root>
 		);
 	} else {
 		return <div></div>;

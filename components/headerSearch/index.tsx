@@ -1,7 +1,7 @@
 import { LogoPrincipal, MenuBurger } from "components/ui/logos";
 import { useState } from "react";
 import { MobileMenuWindows } from "components/mobilMenuWindows";
-import { BuscarOscuro } from "components/InputBuscar";
+import { BuscarOscuro } from "components/InputSearch";
 import { HeaderContainer, HeaderContainerSearch } from "./styled";
 import { LoginDisplayAndButton } from "components/displayLogin";
 

@@ -2,8 +2,14 @@ import { InstagramLogo, TwitterLogo } from "components/ui/logos";
 import { Body, Large } from "components/ui/texts";
 import { Root, RootLinks, RootMenu, RootRedes } from "components/footer/styled";
 import { useRouter } from "next/router";
+import { useMe } from "lib/hooks";
 
 export function Footer() {
+	const user = useMe();
+	console.log("SOY USER", user);
+
+	const login = user == false ? "Ingresar" : " ";
+
 	const router = useRouter();
 	return (
 		<Root>
@@ -14,7 +20,7 @@ export function Footer() {
 							router.push("/signin");
 						}}
 					>
-						<Body white>Ingresar</Body>
+						<Body white>{login}</Body>
 					</a>
 					<a>
 						<Body
@@ -53,7 +59,7 @@ export function Footer() {
 					<InstagramLogo></InstagramLogo>
 				</RootRedes>
 			</RootLinks>
-			<Body white>©2022 fiba</Body>
+			<Body white>©2022 fiba-dev</Body>
 		</Root>
 	);
 }
