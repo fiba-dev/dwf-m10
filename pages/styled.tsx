@@ -9,10 +9,10 @@ export const ContainerProduct = styled.div`
 	width: 100%;
 	background-repeat: no-repeat;
 	background-position: top;
-	background-size: 30%;
+	background-size: 20%;
 	background-image: url("https://res.cloudinary.com/fiba06-dev/image/upload/v1653917861/m10/Pngtree_shopping_cart_mobile_shopping_5407927_kvauol.png");
-
-	@media (min-width: 1080px) {
+	@media (min-width: 680px) {
+		background-size: 25%;
 		background-position: left;
 	}
 `;
