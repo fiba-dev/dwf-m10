@@ -34,7 +34,7 @@ const MostrarTotal = styled.div`
 export function RootTotal(props: any) {
 	return (
 		<MostrarTotal>
-			<Title> {props.children}</Title>{" "}
+			<Title> {props.children}</Title>
 		</MostrarTotal>
 	);
 }

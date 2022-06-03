@@ -21,26 +21,24 @@ export function BuyItem() {
 	const product = useProducts(itemId.itemId);
 	const user = useMe();
 	async function Comprar() {
-		if (user) {
-			if (watchFields <= 10) {
-				let quantity = watchFields >= 1 ? parseInt(watchFields) : 1;
-				if (
-					window.confirm(
-						"seguro desea comprar " + quantity + " " + product.object.Name
-					)
-				) {
-					let res = await createOrder(itemId.itemId, quantity);
-					if (res.url) {
-						router.replace("/thanks");
-						window.open(res.url);
-					}
-				}
-			} else {
-				window.alert("NO HAY STOCK");
-			}
-		} else {
+		let quantity = 1;
+		if (!user) {
 			window.alert("DEBES ESTAR LOGEADO PARA COMPRAR");
 			router.push("/signin");
+		}
+		if (user && watchFields <= 10) {
+			quantity = watchFields >= 1 ? parseInt(watchFields) : 1;
+		} else {
+			window.alert("NO HAY STOCK");
+		}
+		if (
+			window.confirm(
+				"seguro desea comprar " + quantity + " " + product.object.Name
+			)
+		) {
+			let res = await createOrder(itemId.itemId, quantity);
+			router.replace("/thanks");
+			window.open(res.url);
 		}
 	}
 

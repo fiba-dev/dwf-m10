@@ -10,10 +10,8 @@ async function fetchApi(input: RequestInfo, options: any) {
 		newOption.method = newOption.method ? newOption.method : "GET";
 		newOption.headers.Authorization = "bearer " + token;
 	}
-	if (newOption.body) {
-		if (newOption.method != "GET") {
-			newOption.body = JSON.stringify(newOption.body);
-		}
+	if (newOption.body && newOption.method != "GET") {
+		newOption.body = JSON.stringify(newOption.body);
 	}
 	try {
 		const res = await fetch(url, newOption);

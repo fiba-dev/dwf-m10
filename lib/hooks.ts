@@ -1,9 +1,7 @@
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import { fetchApi } from "./api";
-export function refreshPage() {
-	window.location.reload();
-}
+
 export function useMe() {
 	const { data, error } = useSWR("/me", fetchApi);
 	return data;
